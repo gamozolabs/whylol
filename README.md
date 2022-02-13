@@ -1,4 +1,4 @@
-# Summary
+# Summary :sunglasses:
 
 In common bleeding edge securty resarch applications like Symbolic Execution,
 people are inhibited by their abilities to process and parse complex
@@ -8,14 +8,14 @@ from common machine code. Since machine learning is used here, it can be
 scaled out to deploy these security solutions to many problems in the industry.
 Providing radical change.
 
-# Solutions used
+# Solutions used :stuck_out_tongue_winking_eye:
 
-- Machine learning
-- Rust <3
-- Modern HTML
-- High-performance string parsing
-- Complex image compression
-- JSON and well-structured serialization and deserialization
+- Machine learning :volcano:
+- Rust :heart: :heart: :heart: :heart: :heart:
+- Modern HTML :cyclone:
+- High-performance string parsing :zap:
+- Complex image compression :scream_cat:
+- JSON and well-structured serialization and deserialization :pray:
 
 # PRs
 
