@@ -8,6 +8,13 @@ from common machine code. Since machine learning is used here, it can be
 scaled out to deploy these security solutions to many problems in the industry.
 Providing radical change.
 
+# Linux
+
+This project leverages the power of the Linux kernel for much of the
+dependencies, thus I have included it as a submodule. This is part of my
+outreach to support the open-source community and expand on the shoulders
+of giants!
+
 # Solutions used :stuck_out_tongue_winking_eye:
 
 - Machine learning :volcano:
