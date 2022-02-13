@@ -43,3 +43,9 @@ Got expr: CMP quord ptr (R12 + RAX*0x8] , 0x0
 Solved pointer: R12 + RAX*0x8
 ```
 
+# Meta
+
+(I'm currently working on communicating better and I'm just kinda poking fun
+of the whole process, largely making fun of myself and the meta of how things
+are worded)
+
