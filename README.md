@@ -45,7 +45,10 @@ Solved pointer: R12 + RAX*0x8
 
 # Meta
 
-(I'm currently working on communicating better and I'm just kinda poking fun
+<details>
+I'm currently working on communicating better and I'm just kinda poking fun
 of the whole process, largely making fun of myself and the meta of how things
-are worded)
+are worded. I also recognize that these things are valuable and probably
+things that I should have been doing for a much longer time
+</details>
 
