@@ -22,6 +22,8 @@ Providing radical change.
 I am currently accepting PRs! Let me know if you want to contribute and improve
 this project.
 
+# Demo, proof of concept
+
 ```
 pleb@gamey ~/whylol $ cargo run --release
    Compiling whylol v0.1.0 (/home/pleb/whylol)
