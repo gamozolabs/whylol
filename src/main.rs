@@ -2,7 +2,26 @@ use std::io::{Read, Write};
 use std::net::TcpStream;
 use std::sync::Arc;
 
-fn main() {
+
+static NEURAL_NETWORK_WEIGHTS: &[u8] = include_bytes!("../neural_network_weights.bin");
+const NUM_WEIGHTS: usize = 150;
+const NUM_NEURONS: usize = 47;
+
+fn eval_neural_network(image: &[u8]) -> String {
+    let mut result = [0u8; NUM_NEURONS];
+
+    for n in 0..NUM_NEURONS {
+        for x in 0..NUM_WEIGHTS {
+            result[n] = result[n].wrapping_add(
+                image[x].wrapping_mul(NEURAL_NETWORK_WEIGHTS[n * NUM_WEIGHTS + x])
+            );
+        }
+    }
+
+    String::from_utf8(result.to_vec()).unwrap()
+}
+
+pub fn execute_machine_learning_pipeline() -> String {
     // Establish trusted root certificates
     let mut root_store = rustls::RootCertStore::empty();
     root_store.add_server_trust_anchors(
@@ -37,7 +56,7 @@ fn main() {
           Connection: close\r\n\r\n").unwrap();
 
     let mut socket = TcpStream::connect("twitter.com:443").unwrap();
-    let mut tmp = [0u8; 1024 * 1024];
+    let mut tmp = [0u8; 1024 * 64];
     let mut response = Vec::new();
     loop {
         if client.wants_read() {
@@ -109,13 +128,14 @@ fn main() {
         }
     }
 
-    // Write the image
-    std::fs::write("image.png", &response).unwrap();
+    parse_asm_from_image(&response)
+}
 
+fn parse_asm_from_image(image: &[u8]) -> String {
     println!("Decoding as middle english");
 
     // OCR it as middle english from English, Middle (1100-1500)
-    let ocr = tesseract::ocr("image.png", "enm").unwrap();
+    let ocr = eval_neural_network(image);
 
     // Wrap the OCRed data in curlies so it's valid JSON and strip the comma
     // and newline
@@ -132,7 +152,24 @@ fn main() {
     // Split the string to get the expression
     let val = &expr.splitn(2, "ptr ").nth(1).unwrap().splitn(2, "]")
         .next().unwrap()[1..];
-
-    println!("Solved pointer: {val}");
+    
+    val.to_string()
 }
 
+fn main() {
+    let result = execute_machine_learning_pipeline();
+    println!("Solved pointer: {result}");
+}
+
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_neural_network_works_on_test_image() {
+        static IMAGE: &[u8] = include_bytes!("../test_image.png");
+        let result = parse_asm_from_image(&IMAGE);
+        assert_eq!(result, "RBX + 0x10");
+    }
+}
