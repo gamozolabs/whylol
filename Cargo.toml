@@ -8,6 +8,4 @@ edition = "2021"
 [dependencies]
 rustls = "*"
 webpki-roots = "*"
-tesseract = "*"
 serde_json = "*"
-
